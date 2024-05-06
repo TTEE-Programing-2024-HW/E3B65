@@ -68,7 +68,7 @@ int main()
 					else if(a=='n'||a=='N')
 						return 0;
 					else
-						printf("  error\n");
+						printf("錯誤!\n");
 				}		
 		}
 		
@@ -110,5 +110,39 @@ show_2()
 	printf("-----------------------------\n");//主選單
 	printf("請輸入 :");
 }
+
+show_3()
+{
+	while(1)
+	{
+		fflush(stdin);
+		system("cls");
+		printf("請輸入a-n字元 :");
+		a=getch();
+		if(a>='a'&&a<='n')//輸入正確 
+			break;
+		else
+			printf("錯誤!\n");
+		system("pause");
+	}
+	system("cls");
+	z=a-96;//取高度 
+	
+	for(i=0;i<z;i++)
+	{
+		for(j=0;j<z-i;j++)//三角左上空格 
+		{
+			printf(" ");
+		}
+		for(j=0;j<=i;j++)//英文 
+		{
+			printf("%c",a-i); 
+		}
+		printf("\n");//換行 
+	}
+	system("pause");
+}
+
+
 
 

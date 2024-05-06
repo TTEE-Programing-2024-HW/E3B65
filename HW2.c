@@ -144,5 +144,31 @@ show_3()
 }
 
 
-
+show_4()
+{
+	int n;
+	while(1)//块计 
+	{
+		fflush(stdin);
+		system("cls");
+		printf("叫块1-9计 :");
+		scanf("%d",&n);
+		if(n>=1&&n<=9)
+			break;
+		else
+			printf("岿粇!\n");
+		
+		system("pause");
+	}
+	system("cls");
+	for(i=1;i<=n;i++)//玡计 
+	{
+		for(j=1;j<=n;j++)//计 
+		{
+			printf("%d * %d = %2d ,",i,j,i*j);//陪ボ 
+		}
+		printf("\n");//传︽ 
+	}
+	system("pause");
+}
 

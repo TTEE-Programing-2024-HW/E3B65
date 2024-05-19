@@ -34,7 +34,7 @@ int main()
 		}
 	}
 	
-	while(1)//°õ¦æµ{¦¡
+	while(1)//Run Program
 	{
 		system("cls");
 		fflush(stdin);

@@ -4,9 +4,13 @@
 #include<math.h>
 
 int i,j,z;
+int ch[9][9]{0},ah;
 char a;
 
 int show_1(void);
+int show_2(void);
+int show_3(void);
+int show_4(void);
 
 int main()
 {
@@ -55,7 +59,12 @@ int main()
 				
 			case'c':
 			case'C':
-				while(1)
+				show_5();
+				break;
+			
+			case 'd':
+		 	case 'D':
+		 		while(1)
 				{
 					printf("Continue?(y/n)");
 					a=getch();
@@ -65,7 +74,9 @@ int main()
 						return 0;
 					else
 						printf("¿ù»~!\n");
-				}		
+				}
+				
+					
 		}
 		
 	} 
@@ -106,4 +117,123 @@ show_2()//Main Menu
 	printf("|    d. Exit                  |\n");
 	printf("-------------------------------\n");
 	printf("½Ð¿é¤J :");
+}
+
+void show_3(void)
+{
+	for(i=0;i<=8;i++)//???] 
+		for(j=0;j<=8;j++)
+			ch[i][j]=0;
+	system("cls");
+	 		
+	for(z=1;z<=10;z++)//??10?u? 
+	{
+		i=rand()%9;
+		j=rand()%9;
+		if(ch[i][j]==1)
+			z--;
+		else
+			ch[i][j]=1;
+	}
+	show_h0(); 
+	system("pause");	
+}
+
+int show_4(void)
+{
+	int yn,b;
+	system("cls");
+	while(1)
+	{
+		b=rand()%3;
+		if(b==0)
+		{
+			ah=2;
+			show_hb_1();
+			for(i=0;i<=7;i++)
+			{
+				for(j=0;j<=7;j++)
+					if(ch[i][j]==2)
+					{
+						ch[i+1][j]=2;
+						ch[i][j+1]=2;
+						ch[i+1][j+1]=2;
+						break;
+					}
+				if(ch[i][j]==2)
+					break;
+			}
+		}
+		else if(b==1)
+		{
+			while(1)
+			{
+				i=rand()%(6);
+				j=rand()%(9);
+				if(ch[i][j]==1)
+					continue;
+				else 
+				{
+					ch[i][j]=2;
+					system("cls");
+					break;
+				}	
+			}
+			for(i=0;i<=7;i++)
+			{
+				for(j=0;j<=7;j++)
+					if(ch[i][j]==2)
+					{
+						ch[i+1][j]=2;
+						ch[i+2][j]=2;
+						ch[i+3][j]=2;
+						break;
+					}
+				if(ch[i][j]==2)
+					break;
+			}
+			
+		}
+		else if(b==2)
+		{
+			while(1)
+			{
+				i=rand()%(9);
+				j=rand()%(6);
+				if(ch[i][j]==1)
+					continue;
+				else 
+				{
+					ch[i][j]=2;
+					system("cls");
+					break;
+				}	
+			}
+			for(i=0;i<=7;i++)
+			{
+				for(j=0;j<=7;j++)
+					if(ch[i][j]==2)
+					{
+						ch[i][j+1]=2;
+						ch[i][j+2]=2;
+						ch[i][j+3]=2;
+						break;
+					}
+				if(ch[i][j]==2)
+					break;
+			}	
+		}	
+		show_h0();
+		yn=show_hb_2();
+		if(yn==0)
+		{
+			for(i=0;i<=8;i++)
+				for(j=0;j<=8;j++)
+					if(ch[i][j]==2)
+						ch[i][j]=1;
+			return 0;
+		}
+		else if(yn==1)
+			continue;	
+	}
 }

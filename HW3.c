@@ -33,6 +33,42 @@ int main()
 			return 0;
 		}
 	}
+	
+	while(1)//執行程式
+	{
+		system("cls");
+		fflush(stdin);
+		show_2();
+		a=getch();
+		system("cls");
+		switch(a)
+		{
+			case'a':
+			case'A':
+				show_3();
+				break;
+				
+			case'b':
+			case'B':
+				show_4();
+				break;
+				
+			case'c':
+			case'C':
+				while(1)
+				{
+					printf("Continue?(y/n)");
+					a=getch();
+					if(a=='y'||a=='Y')
+						break;
+					else if(a=='n'||a=='N')
+						return 0;
+					else
+						printf("錯誤!\n");
+				}		
+		}
+		
+	} 
 } 
 
 show_1()// Personal screen
@@ -59,4 +95,15 @@ show_1()// Personal screen
     printf("       │　　　　　╰──╮                  \n");
     printf("       ╰────────╯                  \n");
     printf("---------------------------------------------\n");
+}
+
+show_2()//Main Menu
+{
+	printf("--------[BookingSystem]--------\n");
+	printf("|    a. Available seats       |\n");
+	printf("|    b. Arrange for you       |\n");
+	printf("|    c. Choose by yourself    |\n");
+	printf("|    d. Exit                  |\n");
+	printf("-------------------------------\n");
+	printf("請輸入 :");
 }

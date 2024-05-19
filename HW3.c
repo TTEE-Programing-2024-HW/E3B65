@@ -121,12 +121,12 @@ show_2()//Main Menu
 
 void show_3(void)
 {
-	for(i=0;i<=8;i++)//???] 
+	for(i=0;i<=8;i++)
 		for(j=0;j<=8;j++)
 			ch[i][j]=0;
 	system("cls");
 	 		
-	for(z=1;z<=10;z++)//??10?u? 
+	for(z=1;z<=10;z++)
 	{
 		i=rand()%9;
 		j=rand()%9;

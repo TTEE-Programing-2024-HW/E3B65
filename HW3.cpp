@@ -1,6 +1,6 @@
 #include<stdio.h>
 #include<stdlib.h>
-#include<conio.h>
+#include<conio.h>// Windows系統下使用getch()和getche()的文件
 #include<time.h>
 
 void show_a0(void);
@@ -51,22 +51,22 @@ int main()
 		system("cls");
 		switch(a)
 		{
-			case'a':
+			case'a'://Enter a
 			case'A':
 				show_3();
 				break;
 				
-			case'b':
+			case'b'://Enter b
 			case'B':
 				show_4();
 				break;
 				
-			case'c':
+			case'c'://Enter c
 			case'C':
 				show_5();
 				break;
 			
-			case 'd':
+			case 'd'://Enter d
 		 	case 'D':
 		 		while(1)
 				{
@@ -124,7 +124,7 @@ void show_2(void)//Main Menu
 }
 
 
-void show_a0(void)
+void show_a0(void)//Seating chart
 {
 	printf("\\123456789\n");
 	for(i=8;i>=0;i--)
@@ -143,7 +143,7 @@ void show_a0(void)
 	}
 	
 }
-void show_3(void)
+void show_3(void)//Randomly generate ten reserved seats
 {
 	for(i=0;i<=8;i++)
 		for(j=0;j<=8;j++)
@@ -303,7 +303,7 @@ int show_4_2(void)
 			continue;
 	}		
 }
-int show_5(void)
+int show_5(void)//Select a seat
 {
 	int i_c,j_c; 
 	

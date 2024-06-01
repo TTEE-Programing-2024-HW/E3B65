@@ -154,12 +154,16 @@ void show_2(void) // 顯示主選單
 int getIntegerInput(int min, int max) // 獲取指定範圍內的整數輸入
 {
     int input;
-    while (1) {
-        if (scanf("%d", &input) != 1 || input < min || input > max) {
+    while (1) 
+	{
+        if (scanf("%d", &input) != 1 || input < min || input > max) 
+		{
             printErrorMessage("輸入錯誤，請輸入正確的數字！");
             while (getchar() != '\n'); // 清空緩衝區
             printf("請輸入一個介於 %d 和 %d 之間的整數: ", min, max);
-        } else {
+        } 
+		else 
+		{
             return input;
         }
     }
@@ -172,7 +176,8 @@ void printErrorMessage(const char *message) // 顯示錯誤訊息
 
 void readStudentData(Student *students, int n) // 讀取學生資料
 {
-    for (int i = 0; i < n; ++i) {
+    for (int i = 0; i < n; ++i) 
+	{
         printf("輸入第 %d 個學生的資料:\n", i + 1);
         printf("姓名: ");
         scanf("%s", students[i].name);
@@ -194,6 +199,28 @@ void readStudentData(Student *students, int n) // 讀取學生資料
     studentCount = n;
 }
 
+void calculateAverage(Student *student) // 計算學生平均成績
+{
+    student->average = (student->math + student->physics + student->english) / 3.0;
+}
+
+void displayStudents() // 顯示所有學生資料
+{
+    if (studentCount == 0) 
+	{
+        printf("無學生資料。\n");
+        system("pause");
+        return;
+    }
+    for (int i = 0; i < studentCount; ++i) 
+	{
+        printf("姓名: %s, 學號: %d, 數學: %d, 物理: %d, 英文: %d, 平均: %.1f\n",
+            students[i].name, students[i].id, students[i].math,
+            students[i].physics, students[i].english, students[i].average);
+    }
+    system("pause");
+}
+
 
 void show_3(void) 
 {
@@ -203,3 +230,7 @@ void show_3(void)
     readStudentData(students, n);
 }
 
+void show_4(void) 
+{
+    displayStudents();
+}

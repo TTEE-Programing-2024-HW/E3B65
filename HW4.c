@@ -1,8 +1,9 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include <string.h>
 #include <conio.h>
 #include <math.h>
- 
+
 void show_1(void); // 函數宣告
 void show_2(void);
 void show_3(void);
@@ -10,7 +11,7 @@ void show_4(void);
 void show_5(void);
 void show_6(void);
 
-#define MIN_N 5 // 定義常數
+#define MIN_N 5 //定義常數
 #define MAX_N 10
 
 typedef struct // 學生結構體定義
@@ -25,10 +26,9 @@ typedef struct // 學生結構體定義
 
 Student students[MAX_N]; // 學生數組
 int studentCount = 0; // 學生數量
-int i;  
+int i;
 
-
-int getIntegerInput(int min, int max);// 輔助函數宣告
+int getIntegerInput(int min, int max); // 輔助函數宣告
 void readStudentData(Student *students, int n);
 void printErrorMessage(const char *message);
 void calculateAverage(Student *student);
@@ -55,7 +55,8 @@ int main()
         else // 密碼錯誤
             i++;
 
-        if (i == 3) { // 三次錯誤密碼嘗試
+        if (i == 3) // 三次錯誤密碼嘗試
+		{ 
             printf("錯誤!\a");
             system("pause");
             return 0;
@@ -63,16 +64,17 @@ int main()
     }
 
     while (1) // 主功能循環
-	{ 
+	{ // 執行程式
         system("cls");
         fflush(stdin);
-        show_2(); // 顯示主選單 
+        show_2(); // 顯示主選單
         a = getch();
         system("cls");
-        switch (a) {
+        switch (a) 
+		{
             case 'a':
             case 'A':
-                show_3(); // 輸入學生成績 
+                show_3(); // 輸入學生成績
                 break;
 
             case 'b':
@@ -82,12 +84,12 @@ int main()
 
             case 'c':
             case 'C':
-                show_5(); // 搜尋學生成績 
+                show_5(); // 搜尋學生成績
                 break;
 
             case 'd':
             case 'D':
-                show_6(); // 成績排名 
+                show_6(); // 成績排名
                 break;
 
             case 'e':
@@ -130,7 +132,7 @@ void show_1(void) // 顯示個人畫面
     printf("       6666666666      555555555             \n");
     printf("       6        6              5             \n");
     printf("       6        6              5             \n");
-    printf("       6666666666      555555555             \n");
+    printf("       6666666666      555555555             \n\n");
     printf("       ╰┬╯                                \n");
     printf("       ╭┴────╮                        \n");
     printf("       │●　　　　│                        \n");
@@ -140,7 +142,7 @@ void show_1(void) // 顯示個人畫面
 }
 
 void show_2(void) // 顯示主選單
-{ 
+{ // Main Menu
     printf("-----------[BookingSystem]------------\n");
     printf("|     a. Enter student grades        |\n");
     printf("|     b. Display student grades      |\n");
@@ -161,8 +163,7 @@ int getIntegerInput(int min, int max) // 獲取指定範圍內的整數輸入
             printErrorMessage("輸入錯誤，請輸入正確的數字！");
             while (getchar() != '\n'); // 清空緩衝區
             printf("請輸入一個介於 %d 和 %d 之間的整數: ", min, max);
-        } 
-		else 
+        } else 
 		{
             return input;
         }
@@ -247,6 +248,35 @@ void searchStudent() // 搜尋學生資料
     system("pause");
 }
 
+void rankStudents() // 成績排名
+{
+    if (studentCount == 0) 
+	{
+        printf("無學生資料。\n");
+        system("pause");
+        return;
+    }
+    // 排序
+    for (int i = 0; i < studentCount - 1; ++i) 
+	{
+        for (int j = i + 1; j < studentCount; ++j)
+		 {
+            if (students[j].average > students[i].average) 
+			{
+                Student temp = students[i];
+                students[i] = students[j];
+                students[j] = temp;
+            }
+        }
+    }
+    for (int i = 0; i < studentCount; ++i) 
+	{
+        printf("姓名: %s, 學號: %d, 平均: %.1f\n",
+            students[i].name, students[i].id, students[i].average);
+    }
+    system("pause");
+}
+
 void show_3(void) 
 {
     int n;
@@ -265,4 +295,7 @@ void show_5(void)
     searchStudent();
 }
 
-
+void show_6(void) 
+{
+    rankStudents();
+}

@@ -221,6 +221,31 @@ void displayStudents() // 顯示所有學生資料
     system("pause");
 }
 
+void searchStudent() // 搜尋學生資料
+{
+    char searchName[50];
+    if (studentCount == 0) 
+	{
+        printf("無學生資料。\n");
+        system("pause");
+        return;
+    }
+    printf("請輸入要搜尋的姓名: ");
+    scanf("%s", searchName);
+    for (int i = 0; i < studentCount; ++i) 
+	{
+        if (strcmp(students[i].name, searchName) == 0) 
+		{
+            printf("姓名: %s, 學號: %d, 數學: %d, 物理: %d, 英文: %d, 平均: %.1f\n",
+                students[i].name, students[i].id, students[i].math,
+                students[i].physics, students[i].english, students[i].average);
+            system("pause");
+            return;
+        }
+    }
+    printf("資料不存在。\n");
+    system("pause");
+}
 
 void show_3(void) 
 {
@@ -234,3 +259,9 @@ void show_4(void)
 {
     displayStudents();
 }
+
+void show_5(void) 
+{
+    searchStudent();
+}
+
